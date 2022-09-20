@@ -1,6 +1,7 @@
 import React from 'react';
 import './styleb.css';
 class Board extends React.Component {
+    timeout;
     constructor(props) {
         super(props);
 
@@ -34,7 +35,7 @@ class Board extends React.Component {
         ctx.lineWidth = 5;
         ctx.lineJoin = 'round';
         ctx.lineCap = 'round';
-        ctx.strokeStyle = 'blue';
+        ctx.strokeStyle = 'red';
 
         canvas.addEventListener('mousedown', function(e) {
             canvas.addEventListener('mousemove', onPaint, false);
@@ -43,13 +44,20 @@ class Board extends React.Component {
         canvas.addEventListener('mouseup', function() {
             canvas.removeEventListener('mousemove', onPaint, false);
         }, false);
-
+        
+        var root=this;
         var onPaint = function() {
             ctx.beginPath();
             ctx.moveTo(last_mouse.x, last_mouse.y);
             ctx.lineTo(mouse.x, mouse.y);
             ctx.closePath();
             ctx.stroke();
+
+            if(root.timeout != undefined) clearTimeout(root.timeout);
+            root.timeout = setTimeout(function() {
+                var base64ImageData = canvas.toDataUrl("image/png");
+
+            },1000)
         };
     }
     render() {
