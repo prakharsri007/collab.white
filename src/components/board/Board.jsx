@@ -54,7 +54,9 @@ class Board extends React.Component {
     }
     render() {
         return (
-            <canvas className="board" id="board"> </canvas>
+            <div class="sketch" id="sketch">
+                <canvas className="board" id="board"> </canvas>
+            </div>    
         )
     }
 
