@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import './styleb.css';
 class Board extends React.Component {
     timeout;
-    socket = io.connect("http://localhost:5000");
+    socket = io.connect("http://localhost:3000");
     constructor(props) {
         super(props);
 
