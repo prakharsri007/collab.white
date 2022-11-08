@@ -77,7 +77,7 @@ class Board extends React.Component {
             root.timeout = setTimeout(function() {
                 var can = document.getElementsByTagName("canvas");
                 var src = can[0].toDataURL("image/png");
-               // var base64ImageData = canvas[0].toDataUrl("image/png");
+                var base64ImageData = canvas[0].toDataUrl("image/png");
                root.socket.emit("canvas-data", base64ImageData);
 
             },1000)
